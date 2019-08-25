@@ -39,13 +39,13 @@ else
 fi
 
 # Name the host something enticing
-sensitivename = $(whiptail --inputbox "Name your Pi/VM something sensitive, but not too obvious. Something like "FileServer01" Keep it short and without symbols or special chracters" 20 60 3>&1 1>&2 2>&3)
+$sensitivename = $(whiptail --inputbox "Name your Pi/VM something sensitive, but not too obvious. Something like "FileServer01" Keep it short and without symbols or special chracters" 20 60 3>&1 1>&2 2>&3)
 echo $sensitivename > /etc/hostname
 echo "127.0.0.1 $sensitivename" >> /etc/hosts
 
 # Install PSAD
 whiptail --infobox "Installing log monitoring and network scan identification software \n"
-apt-get -y install psad ssmtp python-twisted iptables-persistent libnotify-bin fwsnort raspberrypi-kernel-headers
+apt-get -y install psad ssmtp python-twisted iptables-persistent libnotify-bin fwsnort # raspberrypi-kernel-headers (cannot find package)
 
 # Choose notification option
 
