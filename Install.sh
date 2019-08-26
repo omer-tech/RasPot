@@ -36,7 +36,7 @@ else
 fi
 
 # Name the host something enticing
-$sensitivename = (whiptail --inputbox "Name your Pi/VM something sensitive, but not too obvious. Something like "FileServer01" Keep it short and without symbols or special chracters" 20 60 3>&1 1>&2 2>&3)
+sensitivename=$(whiptail --inputbox "Name your Pi/VM something sensitive, but not too obvious. Something like "FileServer01" Keep it short and without symbols or special chracters" 20 60 3>&1 1>&2 2>&3)
 echo $sensitivename > /etc/hostname
 echo "127.0.0.1 $sensitivename" >> /etc/hosts
 
