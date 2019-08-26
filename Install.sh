@@ -11,7 +11,6 @@ fi
 if whiptail --yesno "We're about to configure your Raspberry Pi as a HoneyPot! This install process will change some vital configurations on your Pi. We recommend only using this Pi as a HoneyPot, and not for other uses." 20 60
 then
     echo "Continue"
-    Continue
 else
     echo "Install terminated by user"
     exit 1
@@ -20,12 +19,11 @@ fi
 # Change Password prompt if password is default
 if [ $SUDO_USER == 'pi' ]
 then
-    if whiptail --yesno "Have you changed your default password yet? If not, would you like to do it now?" 20 60
+    if whiptail --yesno "Would you like to change your password? If you still have your default password, we highly recommend this." 20 60
     then 
      passwd 
     else
      echo "Continue"
-     Continue
     fi
 fi
 
@@ -35,11 +33,10 @@ then
     apt-get dist-upgrade
 else
     echo "Continuing without updates"
-    Continue
 fi
 
 # Name the host something enticing
-$sensitivename = $(whiptail --inputbox "Name your Pi/VM something sensitive, but not too obvious. Something like "FileServer01" Keep it short and without symbols or special chracters" 20 60 3>&1 1>&2 2>&3)
+$sensitivename = (whiptail --inputbox "Name your Pi/VM something sensitive, but not too obvious. Something like "FileServer01" Keep it short and without symbols or special chracters" 20 60 3>&1 1>&2 2>&3)
 echo $sensitivename > /etc/hostname
 echo "127.0.0.1 $sensitivename" >> /etc/hosts
 
