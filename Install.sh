@@ -58,7 +58,7 @@ case $OPTION in
 		sed -i "s/xemailx/$emailaddy/g" ssmtp.conf
 		cp ssmtp.conf /etc/ssmtp/ssmtp.conf
 		check=30
-		whiptail --msgbox "Now, make sure your gmail has two-factor authentication turned on and create an "App Password" (HOW TO: https://devanswers.co/create-application-specific-password-gmail/). Because we don't want to assign your password to any variables, you have to manually edit the smtp configuration file on the next screen. 'AuthUser' is the first part of your email address before the @. Save and exit the editor and I'll see you back here." 20 60
+		whiptail --msgbox "Now, make sure your gmail has two-factor authentication turned on and create an App Password (HOW TO: https://devanswers.co/create-application-specific-password-gmail/). Because we don't want to assign your password to any variables, you have to manually edit the smtp configuration file on the next screen. 'AuthUser' is the first part of your email address before the @. Save and exit the editor and I'll see you back here." 20 60
 		pico /etc/ssmtp/ssmtp.conf
 		whiptail --msgbox "Welcome back! Well Done! Here comes a test message to your email address, give it a few minutes" 20 60
 		echo "test message from RasPot" | ssmtp -vvv $emailaddy
@@ -101,4 +101,4 @@ cp FakePorts.py /root/RasPot
 (crontab -l 2>/dev/null; echo "@reboot python /root/RasPot FakePorts.py &") | crontab -
 python /root/RasPot FakePorts.py &
 ifconfig
-printf "\n \n Now reboot and you should be good to go. Then, portscan this RasPot and see if you get an alert!\n"
+printf "\n \n Now reboot and you should be good to go. Then, gportscan this RasPot and see if you get an alert!\n"
