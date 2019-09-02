@@ -101,4 +101,4 @@ cp FakePorts.py /root/RasPot
 (crontab -l 2>/dev/null; echo "@reboot python /root/RasPot FakePorts.py &") | crontab -
 python /root/RasPot FakePorts.py &
 ifconfig
-printf "\n \n ok, now reboot and you should be good to go. Then, go portscan this RasPot and see if you get an alert!\n"
+printf "\n \n Now reboot and you should be good to go. Then, portscan this RasPot and see if you get an alert!\n"
